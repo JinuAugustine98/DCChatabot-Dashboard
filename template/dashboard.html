@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <!-- Include Plotly.js library -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>User Activity Dashboard</h1>
+
+    <!-- Visualization 1: User Activity Timeline (Line Chart) -->
+    <div id="activity_chart"></div>
+
+    <!-- Visualization 2: Top User Messages (Bar Chart) -->
+    <div id="top_messages_chart"></div>
+
+    <!-- Visualization 3: User Locations Bar Chart (Bar Chart) -->
+    <div id="location_chart"></div>
+
+    <!-- Visualization 4: User Engagement by Time of Day (Heatmap) -->
+    <div id="engagement_chart"></div>
+
+    <script>
+        // Get the JSON data for each chart from Python and parse it
+        var activityData = {{ activity_chart|safe }};
+        var topMessagesData = {{ top_messages_chart|safe }};
+        var locationData = {{ location_chart|safe }};
+        var engagementData = {{ engagement_chart|safe }};
+
+        // Plot the charts using Plotly
+        Plotly.newPlot('activity_chart', [activityData]);
+        Plotly.newPlot('top_messages_chart', [topMessagesData]);
+        Plotly.newPlot('location_chart', [locationData]);
+        Plotly.newPlot('engagement_chart', [engagementData]);
+    </script>
+</body>
+</html>
